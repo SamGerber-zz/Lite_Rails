@@ -1,0 +1,21 @@
+<br>
+<% flash.each do |category, messages| %>
+  <strong><%= category %></strong>, class: <%= category.class.name %>
+  <ul>
+    <% messages.each do |message| %>
+      <li><%= message %></li>
+    <% end %>
+  </ul>
+<% end %>
+
+<a href="/flashes/now">Now</a>
+<a href="/flashes/later">Later</a>
+
+<form action="/flashes/no_token" method="post">
+    <input type="submit" value="No Token">
+</form>
+
+<form action="/flashes/token" method="post">
+    <input type="hidden" name="authenticity_token" value="<%= form_authenticity_token %>">
+    <input type="submit" value="Token">
+</form>
